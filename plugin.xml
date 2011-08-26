@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="halogenUI.contribution1">
+         <menu
+               label="HalogenUI"
+               path="additions"
+               id="halogenUI.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Key Search"
+               class="halogenui.popup.actions.KeySearchAction"
+               menubarPath="halogenUI.menu1/group1"
+               enablesFor="1"
+               id="halogenUI.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="HalogenUI Preferences"
+            class="halogenui.preferences.HalogenUIPreferencePage"
+            id="halogenui.preferences.HalogenUIPreferencePage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="halogenui.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension id="halogen.ui"
+         point="org.eclipse.ui.menus">
+         <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+			id="Halogen.UIMend"
+			label="HalogenUI">
+	         <command
+	         	commandId = "halogen.ui.searchValueByKey"
+	         	id = "halogen.ui.searchValueByKey"
+	         	label = "Search Value By UI Key"
+	         	/>
+	         <command
+	         	commandId = "halogen.ui.searchKeyByValue"
+	         	id = "halogen.ui.searchKeyByValue"
+	         	label = "Search UI Key By Value"
+	         	/>
+	         <command
+	         	commandId = "halogen.ui.advancedSearchr"
+	         	id = "halogen.ui.advancedSearch"
+	         	label = "Advanced Search"
+	         	/>
+         </menu>
+         </menuContribution>
+   </extension>
+   
+   <extension point="org.eclipse.ui.commands">
+   
+   		<category
+   			name ="%halogenUICategoryName"
+   			description="%halogenUICateoryDescription"
+   			id="HalogenUI.category"/>
+   
+   		<command
+   			categoryId="HalogenUI.category"
+   			id="halogen.ui.searchValueByKey"
+   			defaultHandler="halogenui.actions.search.SearchValueByKey"
+   			name="%SearchValueByKey"/>
+   		<command
+   			categoryId="HalogenUI.category"
+   			id="halogen.ui.searchKeyByValue"
+   			defaultHandler="halogenui.actions.search.SearchKeyByValue"
+   			name="%SearchKeyByValue"/>
+   		<command
+   			categoryId="HalogenUI.category"
+   			id="halogen.ui.advancedSearch"
+   			defaultHandler="halogenui.actions.search.AdvancedSearch"
+   			name="%AdvanceSearch"/>  			
+   </extension>
+
+</plugin>
