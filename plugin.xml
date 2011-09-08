@@ -55,7 +55,7 @@
 	         	label = "Search UI Key By Value"
 	         	/>
 	         <command
-	         	commandId = "halogen.ui.advancedSearchr"
+	         	commandId = "halogen.ui.advancedSearch"
 	         	id = "halogen.ui.advancedSearch"
 	         	label = "Advanced Search"
 	         	/>
@@ -85,6 +85,17 @@
    			id="halogen.ui.advancedSearch"
    			defaultHandler="halogenui.actions.search.AdvancedSearch"
    			name="%AdvanceSearch"/>  			
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="halogen.ui.searchValueByKey"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+1">
+      </key>
    </extension>
 
 </plugin>
