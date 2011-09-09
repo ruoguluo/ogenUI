@@ -1,9 +1,16 @@
 package halogenui.preferences;
 
-import org.eclipse.jface.preference.*;
-import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.eclipse.ui.IWorkbench;
 import halogenui.Activator;
+
+import org.eclipse.jface.preference.BooleanFieldEditor;
+import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.FileFieldEditor;
+import org.eclipse.jface.preference.RadioGroupFieldEditor;
+import org.eclipse.jface.preference.StringFieldEditor;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
  * This class represents a preference page that
@@ -22,6 +29,9 @@ import halogenui.Activator;
 public class HalogenUIPreferencePage
 	extends FieldEditorPreferencePage
 	implements IWorkbenchPreferencePage {
+	
+	protected StringFieldEditor surroundingFunction;
+	protected BooleanFieldEditor replaceChoice;
 
 	public HalogenUIPreferencePage() {
 		super(GRID);
@@ -36,23 +46,29 @@ public class HalogenUIPreferencePage
 	 * restore itself.
 	 */
 	public void createFieldEditors() {
-		addField(new FileFieldEditor(PreferenceConstants.P_PATH, 
-				"&Directory preference:", getFieldEditorParent()));
-//		addField(
-//			new BooleanFieldEditor(
-//				PreferenceConstants.P_BOOLEAN,
-//				"&An example of a boolean preference",
-//				getFieldEditorParent()));
-//
-//		addField(new RadioGroupFieldEditor(
-//				PreferenceConstants.P_CHOICE,
-//			"An example of a multiple-choice preference",
-//			1,
-//			new String[][] { { "&Choice 1", "choice1" }, {
-//				"C&hoice 2", "choice2" }
-//		}, getFieldEditorParent()));
-		addField(
-			new StringFieldEditor(PreferenceConstants.P_STRING, "&Surrounding function", getFieldEditorParent()));
+		
+		addField(new FileFieldEditor(PreferenceConstants.PATH, 
+				PreferenceConstants.PATH_TEXT, getFieldEditorParent()));
+		
+		replaceChoice = new BooleanFieldEditor(PreferenceConstants.REPLACE_WITH_UI_KEY,
+				PreferenceConstants.REPLACE_WITH_UI_KEY_TEXT, getFieldEditorParent());
+		
+		addField(replaceChoice);
+		
+		surroundingFunction = new StringFieldEditor(PreferenceConstants.SURROUNDINGFUNCTION, 
+				PreferenceConstants.SURROUNDINGFUNCTION_TEXT, getFieldEditorParent());
+		
+		addField(surroundingFunction);
+		
+		replaceChoice.setPropertyChangeListener(new IPropertyChangeListener(){
+			@Override
+			public void propertyChange(PropertyChangeEvent event) {
+				System.out.println("replaceChoice property changed");
+				surroundingFunction.setEnabled(replaceChoice.getBooleanValue(), getFieldEditorParent());
+			}
+		});
+		
+
 	}
 
 	/* (non-Javadoc)

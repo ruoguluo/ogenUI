@@ -3,28 +3,6 @@
 <plugin>
 
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            objectClass="org.eclipse.core.resources.IFile"
-            id="halogenUI.contribution1">
-         <menu
-               label="HalogenUI"
-               path="additions"
-               id="halogenUI.menu1">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
-         <action
-               label="Key Search"
-               class="halogenui.popup.actions.KeySearchAction"
-               menubarPath="halogenUI.menu1/group1"
-               enablesFor="1"
-               id="halogenUI.newAction">
-         </action>
-      </objectContribution>
-   </extension>
-   <extension
          point="org.eclipse.ui.preferencePages">
       <page
             name="HalogenUI Preferences"
@@ -73,7 +51,7 @@
    		<command
    			categoryId="HalogenUI.category"
    			id="halogen.ui.searchValueByKey"
-   			defaultHandler="halogenui.actions.search.SearchValueByKey"
+   			defaultHandler="halogenui.actions.search.SearchDefaultValueByKey"
    			name="%SearchValueByKey"/>
    		<command
    			categoryId="HalogenUI.category"
@@ -84,7 +62,7 @@
    			categoryId="HalogenUI.category"
    			id="halogen.ui.advancedSearch"
    			defaultHandler="halogenui.actions.search.AdvancedSearch"
-   			name="%AdvanceSearch"/>  			
+   			name="%AdvancedSearch"/>  			
    </extension>
    <extension
          point="org.eclipse.ui.handlers">

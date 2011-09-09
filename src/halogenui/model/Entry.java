@@ -7,6 +7,7 @@ public class Entry {
 	String keyLabel;
 	String module;
 	String area;
+	
 	public String getKey() {
 		return key;
 	}
