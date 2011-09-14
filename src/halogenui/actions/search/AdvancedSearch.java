@@ -14,9 +14,9 @@ public class AdvancedSearch extends AbstractHandler {
 
 		Shell shell = HandlerUtil.getActiveWorkbenchWindow(event).getShell();
 		MessageDialog.openInformation(shell, "Not implemented Yet", "You will get notified when it is implemented, stay tuned!");
-		
+
 		return null;
 	}
 
-	
+
 }
