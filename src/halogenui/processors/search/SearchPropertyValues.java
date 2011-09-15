@@ -50,7 +50,8 @@ public class SearchPropertyValues {
 
 	public static void main(String[] args){
 		try {
-			ArrayList<String> searchResult = search("area","halogenUI.xml");
+			ArrayList<String> searchResult = search("/globalUI/entry[module='General']/@key","halogenUI.xml");
+			System.out.println(searchResult.size());
 			for (String string : searchResult){
 				System.out.println(string);
 			}

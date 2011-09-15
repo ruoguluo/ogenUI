@@ -15,7 +15,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 public class AddEntry extends AbstractHandler {
 
-	private static String newline = System.getProperty("line.separator");
+	private static String newline = "\n";
 	private static String confirmationText = "Confirmation: the following xml snippet will be inserted into HalogenUI.xml\n\n";
 
 	@Override

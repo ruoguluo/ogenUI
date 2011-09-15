@@ -20,36 +20,36 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 public abstract class AbstractSearchHandler extends AbstractHandler {
-	
+
 	public abstract AbstractSearchProcessor getProcessor();
-	
+
 	public abstract String getDisplayValue(Entry entry);
-	
+
 	public void okPressAction(ElementListSelectionDialog dialog, ExecutionEvent event, Object...obj){};
-	
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
+
 		Shell shell = HandlerUtil.getActiveWorkbenchWindow(event).getShell();
 		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
 				.getActivePage().getSelection();
-		
-		if (selection !=null){
-			
+
+		if (selection !=null && selection instanceof TextSelection){
+
 			TextSelection textSelection = (TextSelection) selection;
 			String textForSearching = textSelection.getText();
 			String path = Platform.getPreferencesService().getString("halogenUI", PreferenceConstants.PATH, "", null);
 			AbstractSearchProcessor processor = getProcessor();
-			
+
 			processor.setFilePath(path);
 			ArrayList<Entry> resultEntries = processor.search(textForSearching);
-			
+
 			if (resultEntries.size()>0){
 				String[] options = new String[resultEntries.size()];
 				for (int i=0;i<resultEntries.size();i=i+1){
 					options[i] = getDisplayValue(resultEntries.get(i));
 				}
-				
+
 				ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell, new LabelProvider());
 				dialog.setElements(options);
 				dialog.setTitle("Search Result for '" + textForSearching + "'");
