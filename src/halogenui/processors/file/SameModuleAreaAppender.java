@@ -9,6 +9,8 @@ public class SameModuleAreaAppender extends AbstractEntryAppender {
 	@Override
 	public void append(RandomAccessFile rand, BufferedWriter out, int size,
 			String module, String area, String entryString) throws IOException {
+		
+		System.out.println("SameModuleAreaAppender is called");
 
 		String moduleLine = "";
 		String areaLine = "";

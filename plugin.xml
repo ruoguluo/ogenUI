@@ -37,6 +37,11 @@
 	         	id = "halogen.ui.advancedSearch"
 	         	label = "Advanced Search"
 	         	/>
+	         <command
+	         	commandId = "halogen.ui.addEntry"
+	         	id = "halogen.ui.addEntry"
+	         	label = "New Entry"
+	         	/>
          </menu>
          </menuContribution>
    </extension>
@@ -48,6 +53,11 @@
    			description="%halogenUICateoryDescription"
    			id="HalogenUI.category"/>
    
+   		<command
+   			categoryId="HalogenUI.category"
+   			id="halogen.ui.addEntry"
+   			defaultHandler="halogenui.actions.edit.AddEntry"
+   			name="%AddEntry"/>
    		<command
    			categoryId="HalogenUI.category"
    			id="halogen.ui.searchValueByKey"

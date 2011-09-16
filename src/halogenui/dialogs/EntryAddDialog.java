@@ -112,6 +112,7 @@ public class EntryAddDialog extends Dialog {
 		areaLabel.setText("Area:");
 
 		areaField = new Combo(container, SWT.NONE);
+		areaField.add("                                           ");
 
 		initComponents();
 		return container;
