@@ -1,6 +1,7 @@
 package halogenui.actions.edit;
 
 import halogenui.dialogs.EntryAddDialog;
+import halogenui.model.Constants;
 import halogenui.processors.file.FileContentModifier;
 
 import java.util.Formatter;
@@ -15,7 +16,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 public class AddEntry extends AbstractHandler {
 
-	private static String newline = "\n";
 	private static String confirmationText = "Confirmation: the following xml snippet will be inserted into HalogenUI.xml\n\n";
 
 	@Override
@@ -24,12 +24,7 @@ public class AddEntry extends AbstractHandler {
 		EntryAddDialog dialog = new EntryAddDialog(shell);
 		if (dialog.open() == InputDialog.OK){
 			Formatter fmt = new Formatter();
-			fmt.format("\t<entry key=\"%s\">"+newline+
-					"\t\t<default lang=\"language\">%s</default>"+newline+
-					"\t\t<keylabel>%s</keylabel>"+newline+
-					"\t\t<module>%s</module>"+newline+
-					"\t\t<area>%s</area>"+newline+
-					"\t</entry>"+newline
+			fmt.format(Constants.entryXMLFormatString
 					, dialog.getKey(),dialog.getDefaultValue(),dialog.getKeyLabel()
 					,dialog.getModule(),dialog.getArea());
 

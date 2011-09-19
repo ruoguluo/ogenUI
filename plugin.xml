@@ -25,22 +25,27 @@
 	         <command
 	         	commandId = "halogen.ui.searchValueByKey"
 	         	id = "halogen.ui.searchValueByKey"
-	         	label = "Search Value By UI Key"
+	         	label = "UI Key->Value"
 	         	/>
 	         <command
 	         	commandId = "halogen.ui.searchKeyByValue"
 	         	id = "halogen.ui.searchKeyByValue"
-	         	label = "Search UI Key By Value"
+	         	label = "Value->UI Key"
 	         	/>
-	         <command
+	      <!--   <command
 	         	commandId = "halogen.ui.advancedSearch"
 	         	id = "halogen.ui.advancedSearch"
 	         	label = "Advanced Search"
-	         	/>
+	         	/> -->
 	         <command
 	         	commandId = "halogen.ui.addEntry"
 	         	id = "halogen.ui.addEntry"
 	         	label = "New Entry"
+	         	/>
+	         <command
+	         	commandId = "halogen.ui.delEntry"
+	         	id = "halogen.ui.delEntry"
+	         	label = "Delete Entry"
 	         	/>
          </menu>
          </menuContribution>
@@ -72,7 +77,12 @@
    			categoryId="HalogenUI.category"
    			id="halogen.ui.advancedSearch"
    			defaultHandler="halogenui.actions.search.AdvancedSearch"
-   			name="%AdvancedSearch"/>  			
+   			name="%AdvancedSearch"/>  		
+   		<command
+   			categoryId="HalogenUI.category"
+   			id="halogen.ui.delEntry"
+   			defaultHandler="halogenui.actions.edit.DeleteEntry"
+   			name="%DeleteEntry"/> 	
    </extension>
    <extension
          point="org.eclipse.ui.handlers">

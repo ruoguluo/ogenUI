@@ -22,8 +22,10 @@ public class FileContentModifier {
 	// private static Logger logger = Logger.getLogger("");
 	// private static String module = "General";
 	// private static String area = "Calendar";
-	private static String newline = System.getProperty("line.separator");
-	private static String[] matchFormats = {
+	private static final String path = Platform.getPreferencesService()
+			.getString("halogenUI", PreferenceConstants.PATH, "", null);
+	private static final String newline = System.getProperty("line.separator");
+	private static final String[] matchFormats = {
 			"/globalUI/entry[module='%s' and area='%s']/@key",
 			"/globalUI/entry[module='%s']/@key" };
 
@@ -34,12 +36,24 @@ public class FileContentModifier {
 
 	}
 
+	public static void deleteEntry(String key) {
+		
+		File file = new File(path);
+		if (!file.exists()) {
+			System.out.println("File does not exist.");
+			return;
+		}
+		
+		NewEntryAppender appender = new DeleteEntryAppender();
+		appendEntryString(path,file,0,null,null,key,appender);
+		
+	}
+
 	public static void addNewEntry(String module, String area,
 			String entryString) {
 
 		entryString = entryString.replaceAll("\\n", newline);
-		String path = Platform.getPreferencesService().getString("halogenUI",
-				PreferenceConstants.PATH, "", null);
+
 		File file = new File(path);
 		if (!file.exists()) {
 			System.out.println("File does not exist.");
@@ -69,8 +83,8 @@ public class FileContentModifier {
 				return;
 			}
 		}
-		appendEntryString(path, file, 0, "", "",
-				entryString, new LastEntryAppender());
+		appendEntryString(path, file, 0, "", "", entryString,
+				new LastEntryAppender());
 		// appendAsTheLastEntry(path, file, entryString);
 		return;
 	}

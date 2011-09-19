@@ -30,6 +30,7 @@ public abstract class AbstractSearchHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
+		Object retVal = null;
 		Shell shell = HandlerUtil.getActiveWorkbenchWindow(event).getShell();
 		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
 				.getActivePage().getSelection();
@@ -52,17 +53,19 @@ public abstract class AbstractSearchHandler extends AbstractHandler {
 
 				ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell, new LabelProvider());
 				dialog.setElements(options);
-				dialog.setTitle("Search Result for '" + textForSearching + "'");
+				dialog.setTitle("search Result");
+//				dialog.setTitle("Search Result for '" + textForSearching + "'");
 				if (dialog.open()!=Window.OK){
 					return false;
 				}else{
+					retVal = dialog.getFirstResult();
 					okPressAction(dialog,event,textSelection);
 				}
 			}else{
 				MessageDialog.openInformation(shell, "", "No match entry found!");
 			}
 		}
-		return null;
+		return retVal;
 	}
 
 }

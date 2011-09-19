@@ -56,6 +56,16 @@ public class SearchKeyByValue extends AbstractSearchHandler {
 		IDocument doc = docProvider.getDocument(editor.getEditorInput());
 		
 		try {
+			if (doc.get(offSet-1, 1).equals("\"")&&doc.get(offSet+length,1).equals("\"")){
+				offSet--;
+				length+=2;
+			}
+		} catch (BadLocationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
 			doc.replace(offSet, length, key);
 		} catch (BadLocationException e) {
 			e.printStackTrace();
@@ -67,7 +77,7 @@ public class SearchKeyByValue extends AbstractSearchHandler {
 		IEditorPart editor = HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().getActiveEditor();
 		TextSelection textSelection = (TextSelection)obj[0];
 		String result = dialog.getFirstResult().toString();
-		int endIndex = result.indexOf(" (key label:");
+		int endIndex = result.indexOf(" (Key Label:");
 		String key = result.substring(0, endIndex);
 		System.out.println(key);
 		

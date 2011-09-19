@@ -1,6 +1,7 @@
 package halogenui.processors.search;
 
 import halogenui.model.Entry;
+import halogenui.preferences.PreferenceConstants;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.eclipse.core.runtime.Platform;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -41,7 +43,9 @@ public abstract class AbstractSearchProcessor {
 		ArrayList<Entry> retVal = new ArrayList<Entry>();
 
 		if (filePath==null) {
-			return retVal;
+			filePath = Platform.getPreferencesService().getString("halogenUI", PreferenceConstants.PATH, "", null);
+			if (filePath ==null)
+				return retVal;
 		}
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
