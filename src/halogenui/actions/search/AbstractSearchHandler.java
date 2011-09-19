@@ -35,7 +35,7 @@ public abstract class AbstractSearchHandler extends AbstractHandler {
 		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
 				.getActivePage().getSelection();
 
-		if (selection !=null && selection instanceof TextSelection){
+		if (this.getClass().equals(AdvancedSearch.class)||selection !=null && selection instanceof TextSelection){
 
 			TextSelection textSelection = (TextSelection) selection;
 			String textForSearching = textSelection.getText();

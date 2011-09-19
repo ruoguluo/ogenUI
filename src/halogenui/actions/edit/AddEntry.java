@@ -2,7 +2,7 @@ package halogenui.actions.edit;
 
 import halogenui.dialogs.EntryAddDialog;
 import halogenui.model.Constants;
-import halogenui.processors.file.FileContentModifier;
+import halogenui.processors.append.FileContentModifier;
 
 import java.util.Formatter;
 
@@ -28,7 +28,7 @@ public class AddEntry extends AbstractHandler {
 					, dialog.getKey(),dialog.getDefaultValue(),dialog.getKeyLabel()
 					,dialog.getModule(),dialog.getArea());
 
-			if (MessageDialog.openQuestion(shell, "Confirmation of the xml snippet", confirmationText + fmt.toString()) == true){
+			if (MessageDialog.openQuestion(shell, "Confirmation of the xml snippet", confirmationText + fmt.toString().replaceAll("\r\n","\n")) == true){
 				FileContentModifier.addNewEntry(dialog.getModule(),dialog.getArea(),fmt.toString());
 			}
 		}

@@ -14,7 +14,7 @@
 		<keylabel>AACalendar title</keylabel>
 		<module>AAAGeneral</module>
 		<area>AAACalendar</area>
-	</entr0y>
+	</entry>
 	<entry key="MONTH_1_TEXT">
 		<default lang="language">January</default>
 		<keylabel>January</keylabel>
@@ -32383,7 +32383,7 @@
         <module>Recruitment</module>
         <area>Reports</area>
     </entry>
-   
+
     <entry key="REQUISTION_METRICS_BY_RECRUITER_REPORT_NAME">
 			<default lang="language">Requisition Metrics by Recruiter</default>
 			<keylabel>Requisition Metrics by Recruiter</keylabel>
@@ -32963,7 +32963,7 @@
 		<keylabel>Runtime file upload unknown type error message</keylabel>
 		<module>Recruitment</module>
 		<area>Full Text Storage</area>
-	</entry>	
+	</entry>
 	<entry key="JOB_BOARD_TYPE_CW">
 		<default lang="language">Careers Website</default>
 		<keylabel>Careers Website job board title</keylabel>
@@ -33247,7 +33247,7 @@
         <module>Recruitment</module>
         <area>Reports</area>
     </entry>
-   
+
     <entry key="REQUISTION_METRICS_BY_RECRUITER_REPORT_NAME">
 			<default lang="language">Requisition Metrics by Recruiter</default>
 			<keylabel>Requisition Metrics by Recruiter</keylabel>
@@ -33827,7 +33827,7 @@
 		<keylabel>Runtime file upload unknown type error message</keylabel>
 		<module>Recruitment</module>
 		<area>Full Text Storage</area>
-	</entry>	
+	</entry>
 	<entry key="JOB_BOARD_TYPE_CW">
 		<default lang="language">Careers Website</default>
 		<keylabel>Careers Website job board title</keylabel>

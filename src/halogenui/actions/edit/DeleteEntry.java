@@ -7,7 +7,7 @@ import halogenui.actions.search.AbstractSearchHandler;
 import halogenui.actions.search.AdvancedSearch;
 import halogenui.model.Constants;
 import halogenui.model.Entry;
-import halogenui.processors.file.FileContentModifier;
+import halogenui.processors.append.FileContentModifier;
 import halogenui.processors.search.SearchDefaultValueByKeyProcessor;
 
 import org.eclipse.core.commands.AbstractHandler;
