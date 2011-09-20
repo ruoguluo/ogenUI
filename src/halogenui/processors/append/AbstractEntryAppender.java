@@ -1,6 +1,6 @@
 package halogenui.processors.append;
 
-import halogenui.model.Constants;
+import halogenui.models.Constants;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,7 +1,7 @@
 package halogenui.actions.edit;
 
 import halogenui.dialogs.EntryAddDialog;
-import halogenui.model.Constants;
+import halogenui.models.Constants;
 import halogenui.processors.append.FileContentModifier;
 
 import java.util.Formatter;

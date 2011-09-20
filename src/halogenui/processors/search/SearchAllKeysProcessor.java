@@ -6,14 +6,14 @@ import javax.xml.xpath.XPathExpressionException;
 
 public class SearchAllKeysProcessor extends AbstractSearchProcessor {
 
-	@Override
-	protected XPathExpression getXPathExpression()
-			throws XPathExpressionException {
+    @Override
+    protected XPathExpression getXPathExpression()
+            throws XPathExpressionException {
 
-		XPath xpath = xFactory.newXPath();
-		XPathExpression expr = xpath.compile("/globalUI/entry");
-		
-		return expr;
-	}
+        XPath xpath = xFactory.newXPath();
+        XPathExpression expr = xpath.compile("/globalUI/entry");
+
+        return expr;
+    }
 
 }

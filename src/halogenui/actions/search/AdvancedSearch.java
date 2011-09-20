@@ -1,6 +1,6 @@
 package halogenui.actions.search;
 
-import halogenui.model.Entry;
+import halogenui.models.Entry;
 import halogenui.processors.search.AbstractSearchProcessor;
 import halogenui.processors.search.SearchAllKeysProcessor;
 

@@ -18,9 +18,10 @@
    </extension>
    <extension id="halogen.ui"
          point="org.eclipse.ui.menus">
-         <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <!--<menuContribution locationURI="popup:#TextEditorContext?after=additions">-->
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
-			id="Halogen.UIMend"
+			id="Halogen.UIMenu"
 			label="HalogenUI">
 	         <command
 	         	commandId = "halogen.ui.searchValueByKey"
@@ -46,54 +47,94 @@
 	         	commandId = "halogen.ui.delEntry"
 	         	id = "halogen.ui.delEntry"
 	         	label = "Delete Entry"
-	         	/>
+	         >
+
+             </command>
+
          </menu>
          </menuContribution>
    </extension>
-   
+
    <extension point="org.eclipse.ui.commands">
-   
+
    		<category
    			name ="%halogenUICategoryName"
    			description="%halogenUICateoryDescription"
    			id="HalogenUI.category"/>
-   
+
    		<command
    			categoryId="HalogenUI.category"
    			id="halogen.ui.addEntry"
-   			defaultHandler="halogenui.actions.edit.AddEntry"
    			name="%AddEntry"/>
    		<command
    			categoryId="HalogenUI.category"
    			id="halogen.ui.searchValueByKey"
-   			defaultHandler="halogenui.actions.search.SearchDefaultValueByKey"
    			name="%SearchValueByKey"/>
    		<command
    			categoryId="HalogenUI.category"
    			id="halogen.ui.searchKeyByValue"
-   			defaultHandler="halogenui.actions.search.SearchKeyByValue"
    			name="%SearchKeyByValue"/>
-   		<command
+   		<!--<command
    			categoryId="HalogenUI.category"
    			id="halogen.ui.advancedSearch"
    			defaultHandler="halogenui.actions.search.AdvancedSearch"
-   			name="%AdvancedSearch"/>  		
+   			name="%AdvancedSearch"/>-->
    		<command
    			categoryId="HalogenUI.category"
    			id="halogen.ui.delEntry"
-   			defaultHandler="halogenui.actions.edit.DeleteEntry"
-   			name="%DeleteEntry"/> 	
+   			name="%DeleteEntry"/>
    </extension>
    <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+         <propertyTester class="halogenui.testers.PrefSettingTester"
+         	id="prefTester1" namespace="halogenUI.testers.PrefTester"
+         	properties="test" type="org.eclipse.ui.IWorkbenchPart">
+         </propertyTester>
+   </extension>
+
+   <extension
          point="org.eclipse.ui.handlers">
+         <handler class="halogenui.actions.search.SearchKeyByValue"
+         	commandId="halogen.ui.searchKeyByValue">
+         	<enabledWhen>
+         		<with variable="activePart">
+         			<test forcePluginActivation="true" property="halogenUI.testers.PrefTester.test"/>
+         		</with>
+	         </enabledWhen>
+         </handler>
+         <handler class="halogenui.actions.search.SearchDefaultValueByKey"
+         	commandId="halogen.ui.searchValueByKey">
+         	<enabledWhen>
+         		<with variable="activePart">
+         			<test forcePluginActivation="true" property="halogenUI.testers.PrefTester.test"/>
+         		</with>
+	         </enabledWhen>
+         </handler>
+         <handler class="halogenui.actions.edit.AddEntry"
+         	commandId="halogen.ui.addEntry">
+         	<enabledWhen>
+         		<with variable="activePart">
+         			<test forcePluginActivation="true" property="halogenUI.testers.PrefTester.test"/>
+         		</with>
+	         </enabledWhen>
+         </handler>
+         <handler class="halogenui.actions.edit.DeleteEntry"
+         	commandId="halogen.ui.delEntry">
+         	<enabledWhen>
+         		<with variable="activePart">
+         			<test forcePluginActivation="true" property="halogenUI.testers.PrefTester.test"/>
+         		</with>
+	         </enabledWhen>
+         </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
             commandId="halogen.ui.searchValueByKey"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+1">
+            sequence="CTRL+SHIFT+1">
       </key>
    </extension>
+
 
 </plugin>
