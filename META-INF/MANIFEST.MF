@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.text;bundle-version="3.6.0",
  org.eclipse.ui.workbench.texteditor;bundle-version="3.6.0",
  org.apache.log4j;bundle-version="1.2.15",
- org.eclipse.core.expressions;bundle-version="3.4.200"
+ org.eclipse.core.expressions;bundle-version="3.4.200",
+ org.eclipse.ui.console;bundle-version="3.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

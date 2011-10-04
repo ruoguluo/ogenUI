@@ -33,8 +33,8 @@ public class MenuManagerTest1 {
         System.out.println("ToolbarManager contains what? " + tbm.getItems());
         System.out.println("MenuManager contains what? " + mm.getItems());
         System.out.println("MenuManager get id? " + mm.getId());
-        
-        System.out.println("manager");
+
+        System.out.println("OK");
 
     }
 
